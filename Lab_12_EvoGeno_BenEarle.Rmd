@@ -2,12 +2,20 @@
 title: "Lab_12_EvoGeno_BenEarle"
 author: "Ben Earle"
 date: "11/17/2020"
-output: html_document
+output:
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+```{r, include=FALSE}
+install.packages("prettydoc", repos = "http://cran.us.r-project.org")
+```
+
 
 ```{r, include=FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE))
