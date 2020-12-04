@@ -63,6 +63,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Lab 10 - Population genomics based on high throughput sequencing (HTS)
 [Lab 10](Lab_10_EvoGeno_BenEarle.html)
 
+# Lab 11 - 
+[Lab 11](Lab_11_EvoGeno_BenEarle.html)
 
 ## Lab 12 - Network Analysis using Cytoscape and RCy3
 [Lab 12](Lab_12_EvoGeno_BenEarle.html)
