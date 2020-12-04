@@ -1,0 +1,80 @@
+---
+title: "index"
+author: "Ben Earle"
+date: 8/31/2020
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+# Lab 1
+[Lab 1](Lab_1_Evo_Geno_BenEarle.html)
+
+# Lab 2
+[Lab2](Lab_2_EvoGeno_BenEarle.html)
+
+# Lab 3A
+[Lab 3A](Evo_Geno_Lab3A_starting_with_data_BenEarle.html)
+
+# Lab 3B
+[Lab 3B](Evo_Geno_Lab3B_Manipulating_data_Ben_Earle.html)
+
+# Lab 4
+[Lab 4](Evo_Geno_Lab4_Ben_Earle.html)
+
+# Lab 4a
+[Lab 4a](Evo_Geno_Lab4a_Ben_Earle.html)
+
+## Lab 5 - Data visualization part 2
+[Lab 5](Lab_5_EvoGeno_Ben_Earle.html)
+
+## Lab 5
+[Lab 5 Pt 2](Lab_5_Part_Data_Visualization_part2__EvoGeno_Ben_Earle.html)
+
+## Lab 5 Extra
+[Lab 5 extra](Lab_5_Extra.html)
+
+## Lab 6 Tutorial & Exercises
+[Lab 6](Lab_6_Data_Maps_-_Interactive_Graphs_BenEarle.html)
+
+## Lab 6 - report
+[Lab 6 report](Lab_6_Covid_Report.html)
+
+
+## Lab 6 Shiny Apps
+[Lab 6 shiny apps]
+
+## Lab 7 RNA-Seq workflow: gene-level exploratory analysis and differential expression
+[Lab 7](Lab_7_EvoGeno_BenEarle.html)
+
+## Lab 8 - Sequence Alignment, Phylogenetic Analysis and Tree Visualization
+[Lab 8](Lab_8_EvoGeno_BenEarle.html)
+
+## Lab 9 - Programming in R - Regular Expressions
+[Lab 9](Lab_9a_EvoGeno_Ben_Earle.html)
+
+## Lab 9x - Programming in R - Control Structures and Functions
+[Lab 9x](Lab_9x_EvoGeno_BenEarle.html)
+
+## Lab 10 - Population genomics based on high throughput sequencing (HTS)
+[Lab 10](Lab_10_EvoGeno_BenEarle.html)
+
+
+## Lab 12 - Network Analysis using Cytoscape and RCy3
+[Lab 12](Lab_12_EvoGeno_BenEarle.html)
+
+# REFERENCES
+
+title: "Evolutionary Genomics & Bioinformatics"
+author: "Jeffrey Blanchard"
+date: "2/26/2020"
+output: html_document
+bibliography: data/references.bib
+  
+Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].
+
+

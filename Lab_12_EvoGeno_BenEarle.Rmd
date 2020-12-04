@@ -1,0 +1,184 @@
+---
+title: "Lab_12_EvoGeno_BenEarle"
+author: "Ben Earle"
+date: "11/17/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include=FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("RCy3")
+```
+
+```{r, include=FALSE}
+library(RCy3)
+cytoscapePing()
+```
+
+```{r}
+nodes <- data.frame(id=c("node 0","node 1","node 2","node 3"),
+           group=c("A","A","B","B"), # categorical strings
+           score=as.integer(c(20,10,15,5)), # integers
+           stringsAsFactors=FALSE)
+edges <- data.frame(source=c("node 0","node 0","node 0","node 2"),
+           target=c("node 1","node 2","node 3","node 3"),
+           interaction=c("inhibits","interacts","activates","interacts"),  # optional
+           weight=c(5.1,3.0,5.2,9.9), # numeric
+           stringsAsFactors=FALSE)
+
+createNetworkFromDataFrames(nodes,edges, title="my first network", collection="DataFrame Example")
+```
+
+```{r}
+style.name = "myStyle"
+defaults <- list(NODE_SHAPE="diamond",
+                 NODE_SIZE=30,
+                 EDGE_TRANSPARENCY=120,
+                 NODE_LABEL_POSITION="W,E,c,0.00,0.00")
+nodeLabels <- mapVisualProperty('node label','id','p')
+nodeFills <- mapVisualProperty('node fill color','group','d',c("A","B"), c("#FF9900","#66AAAA"))
+arrowShapes <- mapVisualProperty('Edge Target Arrow Shape','interaction','d',c("activates","inhibits","interacts"),c("Arrow","T","None"))
+edgeWidth <- mapVisualProperty('edge width','weight','p')
+
+createVisualStyle(style.name, defaults, list(nodeLabels,nodeFills,arrowShapes,edgeWidth))
+setVisualStyle(style.name)
+```
+
+```{r}
+    g = new ('graphNEL', edgemode='directed')
+    g = graph::addNode ('A', g)
+    g = graph::addNode ('D', g)
+    g = graph::addNode ('C', g, edges = list('D'))
+    g = graph::addNode ('B', g, edges = list(c('A','D','C')))
+    createNetworkFromGraph (g, title='simple network', collection='GraphNEL Example')
+```
+
+```{r}
+    df <- data.frame (moleculeType=c('kinase','TF','cytokine','cytokine'),
+                     log2fc=c(1.8,3.0,-1.2,-2.5),
+                     row.names = c('A','B','C','D'), # row.names = node names
+                     stringsAsFactors = FALSE)       # important when loading strings!
+    loadTableData (df)
+```
+
+```{r}
+    setNodeShapeDefault ('OCTAGON')
+    setNodeColorDefault ('#AAFF88')
+    setNodeSizeDefault  (60)
+    setNodeFontSizeDefault (30)
+```
+
+```{r}
+    getNodeShapes ()   # diamond, ellipse, trapezoid, triangle, etc.
+    column <- 'moleculeType'
+    values <- c ('kinase',  'TF','cytokine')
+    shapes <- c ('DIAMOND', 'TRIANGLE', 'RECTANGLE')
+    setNodeShapeMapping (column, values, shapes)
+```
+
+```{r}
+    column <- 'log2fc'
+    control.points <- c (-3.0, 0.0, 3.0)
+    colors <-  c ('#5588DD', '#FFFFFF', '#DD8855')
+    setNodeColorMapping (column, control.points, colors)
+```
+
+```{r}
+    control.points <- c (-2.0, 0.0, 2.0)
+    colors <-  c ('#2255CC', '#5588DD', '#FFFFFF', '#DD8855','#CC5522')
+    setNodeColorMapping (column, control.points, colors)
+```
+
+```{r}
+    control.points = c (-3.0, 2.0, 3.0)
+    sizes     = c (20, 80, 90)
+    setNodeSizeMapping (column, control.points, sizes)
+```
+```{r}
+    selectNodes ('C','name')
+```
+
+```{r}
+    getSelectedNodes ()
+```
+
+```{r}
+    selectFirstNeighbors ()
+```
+
+```{r}
+   node.names <- getSelectedNodes ()
+```
+
+```{r}
+    clearSelection()
+    ?clearSelection
+```
+
+```{r, include=FALSE}
+install.packages("magick", repos = "http://cran.us.r-project.org")
+```
+
+```{r, include=FALSE}
+library(magick)
+```
+
+```{r, include=FALSE}
+install.packages("rsvg", repos = "http://cran.us.r-project.org")
+```
+```{r, include=FALSE}
+library(rsvg)
+```
+
+# Final Graphs RCy3/Cytoscape
+
+# galFiltered Network 1 ; cytoscape
+
+```{r}
+galFiltered1 <- image_read_svg("cytoscape/galFiltered1.svg", width = 2000, height = 1000)
+print(galFiltered1)
+```
+
+
+# galFiltered Network 2 ; cytoscape
+
+```{r}
+galFiltered2 <- image_read_svg("cytoscape/gal_Filtered_network.svg", width = 2000, height = 1000)
+print(galFiltered2)
+```
+
+# String Network ; cytoscape
+
+```{r}
+stringnetwork <- image_read_svg("cytoscape/StringNetwork.svg", width = 2000, height = 1000)
+print(stringnetwork)
+```
+
+# String Network - Ovarian Cancer ; cytoscape
+
+```{r}
+ovariancancer <- image_read_svg("cytoscape/String Network-ovariancancer.svg", width = 2000, height = 1000)
+print(ovariancancer)
+```
+
+# Data Frame Example ; RCy3
+
+```{r}
+myfirstnetwork <- image_read_svg("cytoscape/myfirstnetwork.svg", width = 2000, height = 1000)
+print(myfirstnetwork)
+```
+
+# Graph NEL example ; RCy3
+
+```{r}
+graphNEL <- image_read_svg("cytoscape/graphNELexample.svg", width = 2000, height = 1000)
+print(graphNEL)
+```
+
+
